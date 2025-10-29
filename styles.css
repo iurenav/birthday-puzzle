@@ -329,6 +329,12 @@ p {
     opacity: 1;
 }
 
+.morse-message a:hover {
+    color: #fff !important;
+    border-bottom-color: #ff6b6b !important;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .content {

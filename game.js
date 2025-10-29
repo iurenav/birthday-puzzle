@@ -146,7 +146,7 @@ class PuzzleGame {
                 this.showCodeEntry();
             }
         } else {
-            errorDiv.textContent = 'That\'s not the right letter. Check your clue again! 💀';
+            errorDiv.textContent = 'That\'s not the right letter. Check your clue again! ⚰️';
             input.value = '';
         }
     }
@@ -331,7 +331,7 @@ class PuzzleGame {
             // Hide controls and show final message
             document.getElementById('morseControls').classList.add('hidden');
             const messageDiv = document.getElementById('morseMessage');
-            messageDiv.innerHTML = `<p>You cracked the code! 💀</p><h2>${CONFIG.morseMessage}</h2><p>Happy Birthday! 🧛👻🎃</p>`;
+            messageDiv.innerHTML = `<p>You cracked the code! 🩸</p><h2><a href="https://REPLACE-WITH-YOUR-LINK.com" target="_blank" style="color: #ff6b6b; text-decoration: none; border-bottom: 3px solid #8b0000; transition: all 0.3s;">${CONFIG.morseMessage}</a></h2><p>Happy Birthday! 🧛👻🎃</p>`;
             messageDiv.classList.add('show');
         } else {
             errorDiv.textContent = 'Incorrect code! Try again. 🧛';

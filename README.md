@@ -4,6 +4,8 @@ A personalized treasure hunt puzzle game for your wife's birthday!
 
 ## How to Customize
 
+### Step 1: Update the Game Configuration
+
 Open `game.js` and edit the `CONFIG` object at the top of the file:
 
 ```javascript
@@ -26,6 +28,15 @@ const CONFIG = {
     morseMessage: 'ZG25'
 };
 ```
+
+### Step 2: Update the Final Link (Optional)
+
+The morse code message (ZG25) appears as a clickable link at the end. To change where it links to:
+
+1. Open `game.js`
+2. Search for: `https://REPLACE-WITH-YOUR-LINK.com`
+3. Replace with your actual link (e.g., flight booking confirmation, surprise reveal page, etc.)
+4. The link will open in a new tab when clicked
 
 ## How to Deploy to GitHub Pages
 
