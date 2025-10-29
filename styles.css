@@ -375,7 +375,7 @@ p {
     font-size: 2.5em;
     font-weight: bold;
     text-align: center;
-    animation: crawl 8s linear forwards;
+    animation: crawl 20s linear forwards;
     transform-origin: 50% 100%;
 }
 
@@ -498,10 +498,15 @@ p {
     position: absolute;
     opacity: 0;
     transition: opacity 1s;
+    z-index: 100;
 }
 
 .bat-button-container.show {
     opacity: 1;
+}
+
+.bat-button-container.hidden {
+    display: none;
 }
 
 .btn-bat {
@@ -513,11 +518,16 @@ p {
     cursor: pointer;
     transition: all 0.3s;
     box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+    pointer-events: auto;
 }
 
 .btn-bat:hover {
     transform: scale(1.1);
     box-shadow: 0 0 40px rgba(139, 0, 0, 0.8);
+}
+
+.btn-bat:active {
+    transform: scale(0.95);
 }
 
 /* Tokyo Reveal */
@@ -527,10 +537,15 @@ p {
     width: 100%;
     opacity: 0;
     transition: opacity 1s;
+    z-index: 200;
 }
 
 .tokyo-reveal.show {
     opacity: 1;
+}
+
+.tokyo-reveal.hidden {
+    display: none;
 }
 
 .tokyo-words {

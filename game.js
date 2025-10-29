@@ -348,7 +348,7 @@ class PuzzleGame {
             // Show Star Wars scroll
             document.getElementById('scrollText').classList.remove('hidden');
 
-            // After scroll animation (8 seconds), show profile
+            // After scroll animation (20 seconds), show profile
             setTimeout(() => {
                 document.getElementById('scrollText').classList.add('hidden');
                 const profileReveal = document.getElementById('profileReveal');
@@ -364,18 +364,23 @@ class PuzzleGame {
 
                     // After letters appear (2 seconds), wait 10 seconds, then show bat button
                     setTimeout(() => {
+                        // Hide the code reveal text
+                        codeReveal.classList.add('hidden');
+
                         const batButton = document.getElementById('batButton');
                         batButton.classList.remove('hidden');
                         batButton.classList.add('show');
                     }, 12000); // 2s for letters + 10s pause
                 }, 3000);
-            }, 8000);
+            }, 20000);
         }, 500);
     }
 
     revealTokyo() {
         // Hide everything else
+        document.getElementById('batButton').classList.add('hidden');
         document.getElementById('batButton').classList.remove('show');
+        document.getElementById('codeReveal').classList.add('hidden');
         document.getElementById('codeReveal').classList.remove('show');
 
         // Show Tokyo reveal
