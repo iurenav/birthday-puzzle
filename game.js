@@ -2,20 +2,20 @@
 const CONFIG = {
     // The clues that will be displayed
     clues: [
-        "Where we had our first coffee date, look under the cushion of memories.",
-        "The place where you keep your favorite book, check page 42.",
-        "Where we dance in the kitchen, behind the spice jar labeled 'Love'.",
-        "The drawer where socks disappear, one has returned with a message."
+        "Delicious and rich, what a treat I am! It’s cold, here inside this little can.",
+        "Yucky yucky, not in there! Behind it, is where you should stare.",
+        "A sturdy frame, with a great load to bear. Look to the pane, the lil’ turt’ in the air.",
+        "A queens quarters, lie in abandon. Her hindquarters, I’d love to keep my hand in"
     ],
 
     // The letters found at each location (used for validation)
-    expectedLetters: ['L', 'O', 'V', 'E'], // Change these to your actual letters
+    expectedLetters: ['i', 'A', 'e', 'I'], // Change these to your actual letters
 
     // The correct order for the final code
-    correctCode: 'LOVE', // Change this to your desired code
+    correctCode: 'IAie', // Change this to your desired code
 
     // The morse code message for the final clue
-    morseMessage: 'LOVE YOU'
+    morseMessage: 'ZG25'
 };
 
 // Morse code dictionary
