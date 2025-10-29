@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Puzzle Adventure</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Profile Picture Display (shown after capture) -->
+    <div id="profilePicture" class="profile-picture hidden">
+        <img id="profileImg" src="" alt="Profile">
+    </div>
+
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="screen active">
+        <div class="content">
+            <h1>🎉 Birthday Puzzle Adventure 🎉</h1>
+            <p>Welcome to your special birthday treasure hunt!</p>
+            <p>Follow the clues around the house to find the letters you need.</p>
+            <button class="btn-primary" onclick="game.startGame()">Start Adventure</button>
+        </div>
+    </div>
+
+    <!-- Camera Capture Screen -->
+    <div id="cameraScreen" class="screen">
+        <div class="content">
+            <h2>Let's capture your adventurer photo!</h2>
+            <div class="camera-container">
+                <video id="video" autoplay playsinline></video>
+                <canvas id="canvas" style="display: none;"></canvas>
+                <div id="countdown" class="countdown"></div>
+                <div class="camera-oval"></div>
+            </div>
+            <button class="btn-primary" onclick="game.capturePhoto()">Take Photo</button>
+        </div>
+    </div>
+
+    <!-- Clue Screens (1-4) -->
+    <div id="clue1Screen" class="screen clue-screen">
+        <div class="content">
+            <h2>Clue 1</h2>
+            <div class="clue-text">
+                <p id="clue1Text">Your first clue will appear here...</p>
+            </div>
+            <div class="letter-input">
+                <label>Enter the letter you found:</label>
+                <input type="text" id="letter1Input" maxlength="1" class="letter-box">
+                <button class="btn-primary" onclick="game.checkLetter(1)">Continue</button>
+            </div>
+            <div id="error1" class="error-message"></div>
+        </div>
+    </div>
+
+    <div id="clue2Screen" class="screen clue-screen">
+        <div class="content">
+            <h2>Clue 2</h2>
+            <div class="clue-text">
+                <p id="clue2Text">Your second clue will appear here...</p>
+            </div>
+            <div class="letter-input">
+                <label>Enter the letter you found:</label>
+                <input type="text" id="letter2Input" maxlength="1" class="letter-box">
+                <button class="btn-primary" onclick="game.checkLetter(2)">Continue</button>
+            </div>
+            <div id="error2" class="error-message"></div>
+        </div>
+    </div>
+
+    <div id="clue3Screen" class="screen clue-screen">
+        <div class="content">
+            <h2>Clue 3</h2>
+            <div class="clue-text">
+                <p id="clue3Text">Your third clue will appear here...</p>
+            </div>
+            <div class="letter-input">
+                <label>Enter the letter you found:</label>
+                <input type="text" id="letter3Input" maxlength="1" class="letter-box">
+                <button class="btn-primary" onclick="game.checkLetter(3)">Continue</button>
+            </div>
+            <div id="error3" class="error-message"></div>
+        </div>
+    </div>
+
+    <div id="clue4Screen" class="screen clue-screen">
+        <div class="content">
+            <h2>Clue 4</h2>
+            <div class="clue-text">
+                <p id="clue4Text">Your fourth clue will appear here...</p>
+            </div>
+            <div class="letter-input">
+                <label>Enter the letter you found:</label>
+                <input type="text" id="letter4Input" maxlength="1" class="letter-box">
+                <button class="btn-primary" onclick="game.checkLetter(4)">Continue</button>
+            </div>
+            <div id="error4" class="error-message"></div>
+        </div>
+    </div>
+
+    <!-- Code Entry Screen -->
+    <div id="codeScreen" class="screen">
+        <div class="content">
+            <h2>Final Challenge</h2>
+            <p>Now arrange the 4 letters you found in the correct order!</p>
+            <div class="code-input">
+                <input type="text" id="code1" maxlength="1" class="code-box">
+                <input type="text" id="code2" maxlength="1" class="code-box">
+                <input type="text" id="code3" maxlength="1" class="code-box">
+                <input type="text" id="code4" maxlength="1" class="code-box">
+            </div>
+            <button class="btn-primary" onclick="game.checkCode()">Unlock Final Clue</button>
+            <div id="codeError" class="error-message"></div>
+        </div>
+    </div>
+
+    <!-- Morse Code Final Screen -->
+    <div id="morseScreen" class="screen morse-screen">
+        <div class="morse-container">
+            <div id="morseCircle" class="morse-circle"></div>
+        </div>
+        <div id="morseMessage" class="morse-message"></div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
