@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Puzzle Adventure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,10 +18,10 @@
     <!-- Welcome Screen -->
     <div id="welcomeScreen" class="screen active">
         <div class="content">
-            <h1>🎉 Birthday Puzzle Adventure 🎉</h1>
+            <h1>💀 Birthday Puzzle Adventure 🧛</h1>
             <p>Welcome to your special birthday treasure hunt!</p>
             <p>Follow the clues around the house to find the letters you need.</p>
-            <button class="btn-primary" onclick="game.startGame()">Start Adventure</button>
+            <button class="btn-primary" onclick="game.startGame()">Start Adventure 👻</button>
         </div>
     </div>
 
@@ -117,6 +120,20 @@
     <div id="morseScreen" class="screen morse-screen">
         <div class="morse-container">
             <div id="morseCircle" class="morse-circle"></div>
+        </div>
+        <div id="morseControls" class="morse-controls hidden">
+            <button class="btn-morse" onclick="game.replayMorse()">🔁 Replay Morse Code</button>
+            <div class="morse-input-section">
+                <p>Decode the message and enter it below:</p>
+                <div class="morse-code-input">
+                    <input type="text" id="morseCode1" maxlength="1" class="morse-box">
+                    <input type="text" id="morseCode2" maxlength="1" class="morse-box">
+                    <input type="text" id="morseCode3" maxlength="1" class="morse-box">
+                    <input type="text" id="morseCode4" maxlength="1" class="morse-box">
+                </div>
+                <button class="btn-primary" onclick="game.checkMorseCode()">Submit 💀</button>
+                <div id="morseError" class="error-message"></div>
+            </div>
         </div>
         <div id="morseMessage" class="morse-message"></div>
     </div>

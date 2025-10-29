@@ -127,7 +127,7 @@ class PuzzleGame {
 
     checkLetter(clueNumber) {
         const input = document.getElementById(`letter${clueNumber}Input`);
-        const letter = input.value.toUpperCase().trim();
+        const letter = input.value.trim();
         const errorDiv = document.getElementById(`error${clueNumber}`);
 
         if (!letter) {
@@ -146,7 +146,7 @@ class PuzzleGame {
                 this.showCodeEntry();
             }
         } else {
-            errorDiv.textContent = 'That\'s not the right letter. Check your clue again!';
+            errorDiv.textContent = 'That\'s not the right letter. Check your clue again! 💀';
             input.value = '';
         }
     }
@@ -180,15 +180,15 @@ class PuzzleGame {
     }
 
     checkCode() {
-        const code1 = document.getElementById('code1').value.toUpperCase();
-        const code2 = document.getElementById('code2').value.toUpperCase();
-        const code3 = document.getElementById('code3').value.toUpperCase();
-        const code4 = document.getElementById('code4').value.toUpperCase();
+        const code1 = document.getElementById('code1').value;
+        const code2 = document.getElementById('code2').value;
+        const code3 = document.getElementById('code3').value;
+        const code4 = document.getElementById('code4').value;
         const enteredCode = code1 + code2 + code3 + code4;
         const errorDiv = document.getElementById('codeError');
 
         if (enteredCode.length !== 4) {
-            errorDiv.textContent = 'Please enter all 4 letters!';
+            errorDiv.textContent = 'Please enter all 4 letters! 👻';
             return;
         }
 
@@ -196,7 +196,7 @@ class PuzzleGame {
             errorDiv.textContent = '';
             this.showMorseCode();
         } else {
-            errorDiv.textContent = 'Incorrect code! Try arranging the letters differently.';
+            errorDiv.textContent = 'Incorrect code! Try arranging the letters differently. 🧛';
             // Clear the inputs
             document.getElementById('code1').value = '';
             document.getElementById('code2').value = '';
@@ -208,8 +208,15 @@ class PuzzleGame {
 
     showMorseCode() {
         this.showScreen('morse');
+        this.morseSequence = this.buildMorseSequence();
 
-        // Convert message to morse code
+        // Play morse code after a brief delay
+        setTimeout(() => {
+            this.playMorseSequence();
+        }, 1000);
+    }
+
+    buildMorseSequence() {
         const message = CONFIG.morseMessage.toUpperCase();
         const morseSequence = [];
 
@@ -231,18 +238,25 @@ class PuzzleGame {
             }
         }
 
-        // Add longer pause before repeating
-        morseSequence.push({ type: 'off', duration: 2000 });
+        return morseSequence;
+    }
 
+    playMorseSequence() {
         const circle = document.getElementById('morseCircle');
         let index = 0;
 
-        const playMorse = () => {
-            if (index >= morseSequence.length) {
-                index = 0; // Loop the morse code
+        const playNext = () => {
+            if (index >= this.morseSequence.length) {
+                // Morse code finished, show controls
+                circle.classList.remove('on');
+                document.getElementById('morseControls').classList.remove('hidden');
+
+                // Setup auto-advance for morse code inputs
+                this.setupMorseInputs();
+                return;
             }
 
-            const current = morseSequence[index];
+            const current = this.morseSequence[index];
 
             if (current.type === 'on') {
                 circle.classList.add('on');
@@ -251,20 +265,82 @@ class PuzzleGame {
             }
 
             index++;
-            setTimeout(playMorse, current.duration);
+            setTimeout(playNext, current.duration);
         };
 
-        // Start playing morse code after a brief delay
-        setTimeout(() => {
-            playMorse();
+        playNext();
+    }
 
-            // Show the decoded message after a few seconds
-            setTimeout(() => {
-                const messageDiv = document.getElementById('morseMessage');
-                messageDiv.innerHTML = `<p>The message is:</p><h2>${CONFIG.morseMessage}</h2><p>Happy Birthday! 🎉</p>`;
-                messageDiv.classList.add('show');
-            }, 5000);
-        }, 1000);
+    replayMorse() {
+        // Hide controls temporarily
+        document.getElementById('morseControls').classList.add('hidden');
+
+        // Play the sequence again
+        setTimeout(() => {
+            this.playMorseSequence();
+        }, 500);
+    }
+
+    setupMorseInputs() {
+        const morseBoxes = [
+            document.getElementById('morseCode1'),
+            document.getElementById('morseCode2'),
+            document.getElementById('morseCode3'),
+            document.getElementById('morseCode4')
+        ];
+
+        morseBoxes.forEach((box, index) => {
+            // Remove old listeners by cloning
+            const newBox = box.cloneNode(true);
+            box.parentNode.replaceChild(newBox, box);
+
+            newBox.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < 3) {
+                    morseBoxes[index + 1].focus();
+                }
+            });
+
+            newBox.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
+                    morseBoxes[index - 1].focus();
+                }
+                if (e.key === 'Enter') {
+                    this.checkMorseCode();
+                }
+            });
+        });
+
+        morseBoxes[0].focus();
+    }
+
+    checkMorseCode() {
+        const code1 = document.getElementById('morseCode1').value;
+        const code2 = document.getElementById('morseCode2').value;
+        const code3 = document.getElementById('morseCode3').value;
+        const code4 = document.getElementById('morseCode4').value;
+        const enteredCode = code1 + code2 + code3 + code4;
+        const errorDiv = document.getElementById('morseError');
+
+        if (enteredCode.length !== 4) {
+            errorDiv.textContent = 'Please enter all 4 characters! 👻';
+            return;
+        }
+
+        if (enteredCode === CONFIG.morseMessage) {
+            errorDiv.textContent = '';
+            // Hide controls and show final message
+            document.getElementById('morseControls').classList.add('hidden');
+            const messageDiv = document.getElementById('morseMessage');
+            messageDiv.innerHTML = `<p>You cracked the code! 💀</p><h2>${CONFIG.morseMessage}</h2><p>Happy Birthday! 🧛👻🎃</p>`;
+            messageDiv.classList.add('show');
+        } else {
+            errorDiv.textContent = 'Incorrect code! Try again. 🧛';
+            document.getElementById('morseCode1').value = '';
+            document.getElementById('morseCode2').value = '';
+            document.getElementById('morseCode3').value = '';
+            document.getElementById('morseCode4').value = '';
+            document.getElementById('morseCode1').focus();
+        }
     }
 }
 
