@@ -12,6 +12,11 @@ body {
     justify-content: center;
     align-items: center;
     color: #333;
+    transition: background 0.5s ease;
+}
+
+body.black-mode {
+    background: #000;
 }
 
 .screen {
@@ -222,17 +227,7 @@ p {
 
 /* Morse Code Screen */
 .morse-screen {
-    background: black !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    z-index: 9999 !important;
+    background: transparent;
 }
 
 .morse-container {
@@ -347,18 +342,8 @@ p {
 
 /* Final Reveal Screen */
 .final-screen {
-    background: #000 !important;
+    background: transparent;
     overflow: hidden;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    z-index: 9999 !important;
 }
 
 .final-content {

@@ -210,6 +210,9 @@ class PuzzleGame {
         this.showScreen('morse');
         this.morseSequence = this.buildMorseSequence();
 
+        // Switch to black mode
+        document.body.classList.add('black-mode');
+
         // Hide the profile picture for full black screen
         document.getElementById('profilePicture').classList.add('hidden');
 
