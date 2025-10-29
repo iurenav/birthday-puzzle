@@ -351,7 +351,7 @@ class PuzzleGame {
             // Show Star Wars scroll
             document.getElementById('scrollText').classList.remove('hidden');
 
-            // After scroll animation (20 seconds), show profile
+            // After scroll animation (30 seconds), show profile
             setTimeout(() => {
                 document.getElementById('scrollText').classList.add('hidden');
                 const profileReveal = document.getElementById('profileReveal');
@@ -375,7 +375,7 @@ class PuzzleGame {
                         batButton.classList.add('show');
                     }, 12000); // 2s for letters + 10s pause
                 }, 3000);
-            }, 20000);
+            }, 30000);
         }, 500);
     }
 
