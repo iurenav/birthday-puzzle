@@ -234,7 +234,7 @@ class PuzzleGame {
                         morseSequence.push({ type: 'off', duration: 600 }); // word gap
                     }
                 }
-                morseSequence.push({ type: 'off', duration: 600 }); // letter gap
+                morseSequence.push({ type: 'off', duration: 1600 }); // letter gap
             }
         }
 
@@ -324,11 +324,7 @@ class PuzzleGame {
 
         if (enteredCode === CONFIG.morseMessage) {
             errorDiv.textContent = '';
-            // Hide controls and show final message
-            document.getElementById('morseControls').classList.add('hidden');
-            const messageDiv = document.getElementById('morseMessage');
-            messageDiv.innerHTML = `<p>You cracked the code! 🩸</p><h2><a href="https://REPLACE-WITH-YOUR-LINK.com" target="_blank" style="color: #ff6b6b; text-decoration: none; border-bottom: 3px solid #8b0000; transition: all 0.3s;">${CONFIG.morseMessage}</a></h2><p>Happy Birthday! 🧛👻🎃</p>`;
-            messageDiv.classList.add('show');
+            this.showFinalReveal();
         } else {
             errorDiv.textContent = 'Incorrect code! Try again. 🧛';
             document.getElementById('morseCode1').value = '';
@@ -337,6 +333,65 @@ class PuzzleGame {
             document.getElementById('morseCode4').value = '';
             document.getElementById('morseCode1').focus();
         }
+    }
+
+    showFinalReveal() {
+        // Switch to final screen
+        this.showScreen('final');
+
+        // Copy the profile picture
+        const profileSrc = document.getElementById('profileImg').src;
+        document.getElementById('finalProfileImg').src = profileSrc;
+
+        // Start the sequence
+        setTimeout(() => {
+            // Show Star Wars scroll
+            document.getElementById('scrollText').classList.remove('hidden');
+
+            // After scroll animation (8 seconds), show profile
+            setTimeout(() => {
+                document.getElementById('scrollText').classList.add('hidden');
+                const profileReveal = document.getElementById('profileReveal');
+                profileReveal.classList.remove('hidden');
+                profileReveal.classList.add('show');
+
+                // After 3 seconds, show code reveal
+                setTimeout(() => {
+                    profileReveal.classList.remove('show');
+                    const codeReveal = document.getElementById('codeReveal');
+                    codeReveal.classList.remove('hidden');
+                    codeReveal.classList.add('show');
+
+                    // After letters appear (2 seconds), wait 10 seconds, then show bat button
+                    setTimeout(() => {
+                        const batButton = document.getElementById('batButton');
+                        batButton.classList.remove('hidden');
+                        batButton.classList.add('show');
+                    }, 12000); // 2s for letters + 10s pause
+                }, 3000);
+            }, 8000);
+        }, 500);
+    }
+
+    revealTokyo() {
+        // Hide everything else
+        document.getElementById('batButton').classList.remove('show');
+        document.getElementById('codeReveal').classList.remove('show');
+
+        // Show Tokyo reveal
+        const tokyoReveal = document.getElementById('tokyoReveal');
+        tokyoReveal.classList.remove('hidden');
+        tokyoReveal.classList.add('show');
+
+        // Reveal words one by one with dramatic pauses
+        const words = ['word1', 'word2', 'word3', 'word4'];
+        const delays = [0, 1000, 2000, 4000]; // Extra pause before "TOKYO!"
+
+        words.forEach((wordId, index) => {
+            setTimeout(() => {
+                document.getElementById(wordId).classList.add('show');
+            }, delays[index]);
+        });
     }
 }
 

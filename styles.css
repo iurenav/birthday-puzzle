@@ -335,6 +335,246 @@ p {
     text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
 }
 
+/* Final Reveal Screen */
+.final-screen {
+    background: #000;
+    overflow: hidden;
+}
+
+.final-content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Star Wars Scroll Effect */
+.scroll-text {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    perspective: 400px;
+    overflow: hidden;
+}
+
+.scroll-text.hidden {
+    display: none;
+}
+
+.crawl {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    color: #ffd700;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    animation: crawl 8s linear forwards;
+    transform-origin: 50% 100%;
+}
+
+.crawl p {
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+@keyframes crawl {
+    0% {
+        transform: rotateX(20deg) translateY(100vh);
+    }
+    100% {
+        transform: rotateX(20deg) translateY(-100vh);
+    }
+}
+
+/* Stars background */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(2px 2px at 60% 70%, white, transparent),
+        radial-gradient(1px 1px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 80% 10%, white, transparent),
+        radial-gradient(2px 2px at 90% 60%, white, transparent),
+        radial-gradient(1px 1px at 33% 80%, white, transparent),
+        radial-gradient(2px 2px at 70% 40%, white, transparent);
+    background-size: 200% 200%;
+    animation: twinkle 5s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Profile Reveal */
+.profile-reveal {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.profile-reveal.show {
+    opacity: 1;
+}
+
+.final-profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #8b0000;
+    box-shadow: 0 0 30px rgba(139, 0, 0, 0.8);
+}
+
+/* Code Reveal */
+.code-reveal {
+    position: absolute;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.code-reveal.show {
+    opacity: 1;
+}
+
+.code-reveal p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: #ffd700;
+}
+
+.code-letters {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.reveal-letter {
+    font-size: 4em;
+    font-family: 'Creepster', cursive;
+    color: #8b0000;
+    opacity: 0;
+    animation: fadeInLetter 0.5s forwards;
+}
+
+.reveal-letter:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.reveal-letter:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.reveal-letter:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.reveal-letter:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+@keyframes fadeInLetter {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Bat Button */
+.bat-button-container {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.bat-button-container.show {
+    opacity: 1;
+}
+
+.btn-bat {
+    background: rgba(30, 30, 30, 0.9);
+    border: 3px solid #8b0000;
+    font-size: 4em;
+    padding: 20px 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+}
+
+.btn-bat:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(139, 0, 0, 0.8);
+}
+
+/* Tokyo Reveal */
+.tokyo-reveal {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tokyo-reveal.show {
+    opacity: 1;
+}
+
+.tokyo-words {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.tokyo-word {
+    font-family: 'Creepster', cursive;
+    font-size: 6em;
+    font-weight: bold;
+    color: #8b0000;
+    text-shadow: 0 0 20px rgba(139, 0, 0, 0.8);
+    opacity: 0;
+    transform: scale(0);
+}
+
+.tokyo-word.show {
+    animation: popIn 0.5s forwards;
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.tokyo-subtitle {
+    margin-top: 30px;
+    font-size: 1.2em;
+    color: #999;
+    font-style: italic;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .content {

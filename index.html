@@ -20,7 +20,7 @@
         <div class="content">
             <h1>⚰️ Birthday Puzzle Adventure 🧛</h1>
             <p>Welcome to your special birthday treasure hunt!</p>
-            <p>Follow the clues around the house to find the letters you need.</p>
+            <p>Follow the clues and solve the riddles to reveal your birthday surprise!</p>
             <button class="btn-primary" onclick="game.startGame()">Start Adventure 👻</button>
         </div>
     </div>
@@ -136,6 +136,43 @@
             </div>
         </div>
         <div id="morseMessage" class="morse-message"></div>
+    </div>
+
+    <!-- Final Reveal Screen -->
+    <div id="finalScreen" class="screen final-screen">
+        <div class="stars"></div>
+        <div class="final-content">
+            <div id="scrollText" class="scroll-text hidden">
+                <div class="crawl">
+                    <p>Congratulations, Anyela!</p>
+                    <p>You've reached the end of this game and now it's time to claim your prize.</p>
+                </div>
+            </div>
+            <div id="profileReveal" class="profile-reveal hidden">
+                <img id="finalProfileImg" src="" alt="You!" class="final-profile-img">
+            </div>
+            <div id="codeReveal" class="code-reveal hidden">
+                <p>Type this code into your nearest Google browser:</p>
+                <div class="code-letters">
+                    <span id="letter-Z" class="reveal-letter">Z</span>
+                    <span id="letter-G" class="reveal-letter">G</span>
+                    <span id="letter-2" class="reveal-letter">2</span>
+                    <span id="letter-5" class="reveal-letter">5</span>
+                </div>
+            </div>
+            <div id="batButton" class="bat-button-container hidden">
+                <button class="btn-bat" onclick="game.revealTokyo()">🦇</button>
+            </div>
+            <div id="tokyoReveal" class="tokyo-reveal hidden">
+                <div class="tokyo-words">
+                    <span id="word1" class="tokyo-word">YOU'RE</span>
+                    <span id="word2" class="tokyo-word">GOING</span>
+                    <span id="word3" class="tokyo-word">TO</span>
+                    <span id="word4" class="tokyo-word">TOKYO!</span>
+                </div>
+                <p class="tokyo-subtitle">*in february lmao</p>
+            </div>
+        </div>
     </div>
 
     <script src="game.js"></script>
