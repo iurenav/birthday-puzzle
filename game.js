@@ -290,17 +290,13 @@ class PuzzleGame {
         ];
 
         morseBoxes.forEach((box, index) => {
-            // Remove old listeners by cloning
-            const newBox = box.cloneNode(true);
-            box.parentNode.replaceChild(newBox, box);
-
-            newBox.addEventListener('input', (e) => {
+            box.addEventListener('input', (e) => {
                 if (e.target.value.length === 1 && index < 3) {
                     morseBoxes[index + 1].focus();
                 }
             });
 
-            newBox.addEventListener('keydown', (e) => {
+            box.addEventListener('keydown', (e) => {
                 if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
                     morseBoxes[index - 1].focus();
                 }
