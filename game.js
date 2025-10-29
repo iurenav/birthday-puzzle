@@ -210,6 +210,9 @@ class PuzzleGame {
         this.showScreen('morse');
         this.morseSequence = this.buildMorseSequence();
 
+        // Hide the profile picture for full black screen
+        document.getElementById('profilePicture').classList.add('hidden');
+
         // Play morse code after a brief delay
         setTimeout(() => {
             this.playMorseSequence();

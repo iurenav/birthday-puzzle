@@ -223,6 +223,13 @@ p {
 /* Morse Code Screen */
 .morse-screen {
     background: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 .morse-container {
@@ -339,6 +346,13 @@ p {
 .final-screen {
     background: #000;
     overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 .final-content {
@@ -449,6 +463,11 @@ p {
 
 .code-reveal.show {
     opacity: 1;
+}
+
+.code-reveal.hidden {
+    display: none !important;
+    opacity: 0 !important;
 }
 
 .code-reveal p {
@@ -588,6 +607,15 @@ p {
     font-size: 1.2em;
     color: #999;
     font-style: italic;
+    opacity: 0;
+    animation: fadeInSubtitle 1s forwards;
+    animation-delay: 4.5s;
+}
+
+@keyframes fadeInSubtitle {
+    to {
+        opacity: 1;
+    }
 }
 
 /* Fireworks */
