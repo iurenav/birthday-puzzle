@@ -9,7 +9,7 @@ const CONFIG = {
     ],
 
     // The letters found at each location (used for validation)
-    expectedLetters: ['i', 'A', 'e', 'I'], // Change these to your actual letters
+    expectedLetters: ['i', 'I', 'e', 'A'], // Change these to your actual letters
 
     // The correct order for the final code
     correctCode: 'IAie', // Change this to your desired code
